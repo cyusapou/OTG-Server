@@ -1,3 +1,4 @@
+import http from 'node:http'
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { Low } from 'lowdb'
 import { JSONFile } from 'lowdb/node'
@@ -27,7 +28,7 @@ const observer = new Observer(new NormalizedAdapter(adapter))
 const db = new Low(observer, {})
 await db.read()
 
-const app = createApp(db, { logger: false, static: [] })
+const jsonServerApp = createApp(db, { logger: false, static: [] })
 
 function haversineKm(lat1, lon1, lat2, lon2) {
   const R = 6371
@@ -39,18 +40,19 @@ function haversineKm(lat1, lon1, lat2, lon2) {
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 }
 
-app.get('/api/v1/public/nearest-stop', (req, res) => {
+function handleNearestStop(req, res) {
   const url = new URL(req.url, `http://localhost:${PORT}`)
   const userLat = parseFloat(url.searchParams.get('userLat'))
   const userLng = parseFloat(url.searchParams.get('userLng'))
   const destinationId = url.searchParams.get('destinationId')
 
   if (isNaN(userLat) || isNaN(userLng)) {
-    return res.status(400).json({ error: 'userLat and userLng are required' })
+    res.writeHead(400, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' })
+    res.end(JSON.stringify({ error: 'userLat and userLng are required' }))
+    return
   }
 
   const stops = db.data.stops || []
-
   const ranked = stops
     .filter(s => s.id !== destinationId)
     .map(s => ({
@@ -59,22 +61,47 @@ app.get('/api/v1/public/nearest-stop', (req, res) => {
     }))
     .sort((a, b) => a.distanceKm - b.distanceKm)
 
-  const nearestStop = ranked[0] || null
-  const alternativeStops = ranked.slice(1, 6)
-
-  res.json({
-    data: { nearestStop, alternativeStops },
+  const body = JSON.stringify({
+    data: {
+      nearestStop: ranked[0] || null,
+      alternativeStops: ranked.slice(1, 6),
+    },
   })
+
+  res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' })
+  res.end(body)
+}
+
+const server = http.createServer((req, res) => {
+  const pathname = req.url.split('?')[0]
+
+  if (req.method === 'OPTIONS') {
+    res.writeHead(204, {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    })
+    res.end()
+    return
+  }
+
+  if (pathname === '/api/v1/public/nearest-stop' && req.method === 'GET') {
+    handleNearestStop(req, res)
+    return
+  }
+
+  jsonServerApp.handler(req, res)
 })
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`\n  On The Go API Server`)
   console.log(`  Running on port ${PORT}`)
   console.log(`  http://localhost:${PORT}\n`)
-  console.log(`  Endpoints:`)
+  console.log(`  Custom endpoints:`)
+  console.log(`    GET /api/v1/public/nearest-stop?userLat=&userLng=&destinationId=`)
+  console.log(`\n  JSON Server collections:`)
   Object.keys(db.data).forEach(key => {
     console.log(`    http://localhost:${PORT}/${key}`)
   })
-  console.log(`    http://localhost:${PORT}/api/v1/public/nearest-stop`)
   console.log()
 })
