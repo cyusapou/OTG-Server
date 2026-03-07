@@ -29,6 +29,44 @@ await db.read()
 
 const app = createApp(db, { logger: false, static: [] })
 
+function haversineKm(lat1, lon1, lat2, lon2) {
+  const R = 6371
+  const dLat = (lat2 - lat1) * Math.PI / 180
+  const dLon = (lon2 - lon1) * Math.PI / 180
+  const a = Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLon / 2) ** 2
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+}
+
+app.get('/api/v1/public/nearest-stop', (req, res) => {
+  const url = new URL(req.url, `http://localhost:${PORT}`)
+  const userLat = parseFloat(url.searchParams.get('userLat'))
+  const userLng = parseFloat(url.searchParams.get('userLng'))
+  const destinationId = url.searchParams.get('destinationId')
+
+  if (isNaN(userLat) || isNaN(userLng)) {
+    return res.status(400).json({ error: 'userLat and userLng are required' })
+  }
+
+  const stops = db.data.stops || []
+
+  const ranked = stops
+    .filter(s => s.id !== destinationId)
+    .map(s => ({
+      ...s,
+      distanceKm: haversineKm(userLat, userLng, s.latitude, s.longitude),
+    }))
+    .sort((a, b) => a.distanceKm - b.distanceKm)
+
+  const nearestStop = ranked[0] || null
+  const alternativeStops = ranked.slice(1, 6)
+
+  res.json({
+    data: { nearestStop, alternativeStops },
+  })
+})
+
 app.listen(PORT, () => {
   console.log(`\n  On The Go API Server`)
   console.log(`  Running on port ${PORT}`)
@@ -37,5 +75,6 @@ app.listen(PORT, () => {
   Object.keys(db.data).forEach(key => {
     console.log(`    http://localhost:${PORT}/${key}`)
   })
+  console.log(`    http://localhost:${PORT}/api/v1/public/nearest-stop`)
   console.log()
 })
