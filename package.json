@@ -1,0 +1,17 @@
+{
+  "name": "onthego-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "On The Go — JSON Server API (deployable)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "json-server": "^1.0.0-beta.12"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

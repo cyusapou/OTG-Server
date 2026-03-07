@@ -1,0 +1,457 @@
+{
+  "users": [
+    {
+      "id": "u001",
+      "username": "cyusaclever@gmail.com",
+      "password": "cyusa85321",
+      "role": "rura",
+      "firstName": "Cyusa",
+      "lastName": "Clever",
+      "email": "cyusaclever@gmail.com",
+      "phone": "+250 788 000 000",
+      "companyId": null,
+      "depotId": null,
+      "mustChangePassword": false,
+      "isActive": true,
+      "lastLoginAt": "2026-03-07T01:13:41.384Z",
+      "createdBy": null,
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": "15e1",
+      "firstName": "CYUSA",
+      "lastName": "Clever",
+      "username": "cyusa",
+      "password": "123456789",
+      "email": "cyusaclever@gmail.com",
+      "phone": "0798971658",
+      "role": "express_admin",
+      "companyId": "368f",
+      "isActive": true,
+      "mustChangePassword": false,
+      "createdAt": "2026-03-07T00:39:47.152Z",
+      "lastLoginAt": "2026-03-07T01:05:18.176Z",
+      "updatedAt": "2026-03-07T00:42:05.346Z"
+    },
+    {
+      "id": "5c4b",
+      "firstName": "Mugisha ",
+      "lastName": "R.Guevara",
+      "phone": "0788888888",
+      "email": "rushinga1@gmail.com",
+      "username": "guevara",
+      "password": "987654321",
+      "role": "manager",
+      "companyId": "368f",
+      "depotId": "cbae",
+      "mustChangePassword": false,
+      "isActive": true,
+      "createdAt": "2026-03-07T01:09:23.355Z",
+      "lastLoginAt": "2026-03-07T01:10:59.551Z",
+      "updatedAt": "2026-03-07T01:11:11.766Z"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "bfae",
+      "userId": "15e1",
+      "role": "express_admin",
+      "companyId": "368f",
+      "createdAt": "2026-03-07T00:41:46.824Z",
+      "expiresAt": "2026-03-07T08:41:46.824Z"
+    },
+    {
+      "id": "15d8",
+      "userId": "u001",
+      "role": "rura",
+      "companyId": null,
+      "depotId": null,
+      "createdAt": "2026-03-07T01:13:41.352Z",
+      "expiresAt": "2026-03-07T09:13:41.352Z"
+    }
+  ],
+  "companies": [
+    {
+      "id": "368f",
+      "name": "Docks Transportation",
+      "registrationNumber": "otg001",
+      "phone": "0798971658",
+      "email": "cyusaclever@gmail.com",
+      "address": "Kg 647 street",
+      "isActive": true,
+      "status": "active",
+      "createdAt": "2026-03-07T00:39:47.058Z"
+    }
+  ],
+  "depots": [
+    {
+      "id": "cbae",
+      "name": "Kigali centre",
+      "city": "Kigali",
+      "address": "Kg 647 street",
+      "phone": "0788888888",
+      "companyId": "368f",
+      "managerId": null,
+      "isActive": true,
+      "createdAt": "2026-03-07T01:08:41.200Z"
+    }
+  ],
+  "routes": [],
+  "routeApprovals": [],
+  "stops": [
+    {
+      "id": "stop001",
+      "name": "Nyabugogo Main Station",
+      "code": "NYB",
+      "city": "Kigali",
+      "latitude": -1.9441,
+      "longitude": 30.0619,
+      "isTerminal": true
+    },
+    {
+      "id": "stop002",
+      "name": "Remera Sonatubes",
+      "code": "REM",
+      "city": "Kigali",
+      "latitude": -1.958,
+      "longitude": 30.104,
+      "isTerminal": false
+    },
+    {
+      "id": "stop003",
+      "name": "Downtown Kigali",
+      "code": "DKG",
+      "city": "Kigali",
+      "latitude": -1.9508,
+      "longitude": 30.0588,
+      "isTerminal": false
+    },
+    {
+      "id": "stop004",
+      "name": "Kimironko Market",
+      "code": "KMK",
+      "city": "Kigali",
+      "latitude": -1.942,
+      "longitude": 30.11,
+      "isTerminal": false
+    },
+    {
+      "id": "stop005",
+      "name": "Kicukiro Centre",
+      "code": "KCK",
+      "city": "Kigali",
+      "latitude": -1.981,
+      "longitude": 30.082,
+      "isTerminal": false
+    },
+    {
+      "id": "stop006",
+      "name": "Kanombe Station",
+      "code": "KNB",
+      "city": "Kigali",
+      "latitude": -1.972,
+      "longitude": 30.135,
+      "isTerminal": false
+    },
+    {
+      "id": "stop007",
+      "name": "Butare Terminal",
+      "code": "BUT",
+      "city": "Huye",
+      "latitude": -2.5974,
+      "longitude": 29.7394,
+      "isTerminal": true
+    },
+    {
+      "id": "stop008",
+      "name": "Huye Main Terminal",
+      "code": "HYE",
+      "city": "Huye",
+      "latitude": -2.607,
+      "longitude": 29.745,
+      "isTerminal": true
+    },
+    {
+      "id": "stop009",
+      "name": "Musanze Bus Park",
+      "code": "MSZ",
+      "city": "Musanze",
+      "latitude": -1.4993,
+      "longitude": 29.6345,
+      "isTerminal": true
+    },
+    {
+      "id": "stop010",
+      "name": "Gisenyi Bus Park",
+      "code": "GSY",
+      "city": "Rubavu",
+      "latitude": -1.6848,
+      "longitude": 29.2566,
+      "isTerminal": true
+    },
+    {
+      "id": "stop011",
+      "name": "Rubavu Terminal",
+      "code": "RBV",
+      "city": "Rubavu",
+      "latitude": -1.678,
+      "longitude": 29.254,
+      "isTerminal": true
+    },
+    {
+      "id": "stop012",
+      "name": "Muhanga Station",
+      "code": "MHG",
+      "city": "Muhanga",
+      "latitude": -2.0838,
+      "longitude": 29.7566,
+      "isTerminal": true
+    },
+    {
+      "id": "stop013",
+      "name": "Rwamagana Station",
+      "code": "RWM",
+      "city": "Rwamagana",
+      "latitude": -1.949,
+      "longitude": 30.432,
+      "isTerminal": true
+    },
+    {
+      "id": "stop014",
+      "name": "Nyamata Station",
+      "code": "NYM",
+      "city": "Bugesera",
+      "latitude": -2.134,
+      "longitude": 30.086,
+      "isTerminal": true
+    },
+    {
+      "id": "stop015",
+      "name": "Cyangugu Bus Park",
+      "code": "CYG",
+      "city": "Rusizi",
+      "latitude": -2.484,
+      "longitude": 28.907,
+      "isTerminal": true
+    },
+    {
+      "id": "stop016",
+      "name": "Kibungo Station",
+      "code": "KBG",
+      "city": "Ngoma",
+      "latitude": -2.159,
+      "longitude": 30.543,
+      "isTerminal": true
+    },
+    {
+      "id": "stop017",
+      "name": "Kayonza Junction",
+      "code": "KYZ",
+      "city": "Kayonza",
+      "latitude": -1.856,
+      "longitude": 30.625,
+      "isTerminal": false
+    },
+    {
+      "id": "stop018",
+      "name": "Gakenke Stop",
+      "code": "GKE",
+      "city": "Gakenke",
+      "latitude": -1.692,
+      "longitude": 29.785,
+      "isTerminal": false
+    },
+    {
+      "id": "stop019",
+      "name": "Nyanza Station",
+      "code": "NYZ",
+      "city": "Nyanza",
+      "latitude": -2.352,
+      "longitude": 29.751,
+      "isTerminal": false
+    },
+    {
+      "id": "stop020",
+      "name": "Ruhango Stop",
+      "code": "RHG",
+      "city": "Ruhango",
+      "latitude": -2.231,
+      "longitude": 29.778,
+      "isTerminal": false
+    },
+    {
+      "id": "stop021",
+      "name": "Kibuye Station",
+      "code": "KBY",
+      "city": "Karongi",
+      "latitude": -2.061,
+      "longitude": 29.348,
+      "isTerminal": true
+    },
+    {
+      "id": "stop022",
+      "name": "UTC Bus Park",
+      "code": "UTC",
+      "city": "Kigali",
+      "latitude": -1.9495,
+      "longitude": 30.0612,
+      "isTerminal": false
+    },
+    {
+      "id": "stop023",
+      "name": "Rilima Station",
+      "code": "RLM",
+      "city": "Bugesera",
+      "latitude": -2.08,
+      "longitude": 30.12,
+      "isTerminal": false
+    },
+    {
+      "id": "stop024",
+      "name": "Ruyenzi Junction",
+      "code": "RYZ",
+      "city": "Kamonyi",
+      "latitude": -2.018,
+      "longitude": 29.86,
+      "isTerminal": false
+    }
+  ],
+  "schedules": [],
+  "buses": [],
+  "drivers": [],
+  "workers": [],
+  "bookings": [],
+  "payments": [],
+  "routineTrips": [],
+  "plannedTrips": [],
+  "notifications": [],
+  "scanLogs": [],
+  "tripStatuses": [],
+  "workerSessions": [],
+  "driverSessions": [],
+  "fareCollections": [],
+  "expenses": [],
+  "salaries": [],
+  "incidents": [],
+  "driverPerformance": [],
+  "auditLogs": [
+    {
+      "id": "0032",
+      "userId": null,
+      "userRole": "rura",
+      "companyId": null,
+      "action": "create_company",
+      "targetType": "company",
+      "targetId": "368f",
+      "description": "Registered company \"Docks Transportation\" with admin cyusa",
+      "metadata": {},
+      "ipAddress": null,
+      "createdAt": "2026-03-07T00:39:47.188Z"
+    },
+    {
+      "id": "cedd",
+      "userId": "15e1",
+      "userRole": "express_admin",
+      "companyId": "368f",
+      "action": "login",
+      "targetType": "session",
+      "targetId": "bfae",
+      "description": "CYUSA logged in",
+      "metadata": {},
+      "ipAddress": null,
+      "createdAt": "2026-03-07T00:41:46.891Z"
+    },
+    {
+      "id": "b4bf",
+      "userId": "15e1",
+      "userRole": "express_admin",
+      "companyId": "368f",
+      "action": "login",
+      "targetType": "session",
+      "targetId": "b1c2",
+      "description": "CYUSA logged in",
+      "metadata": {},
+      "ipAddress": null,
+      "createdAt": "2026-03-07T01:05:18.247Z"
+    },
+    {
+      "id": "65bf",
+      "userId": "15e1",
+      "userRole": "express_admin",
+      "companyId": "368f",
+      "action": "create",
+      "targetType": "depot",
+      "targetId": "cbae",
+      "description": "Created depot Kigali centre",
+      "metadata": {},
+      "ipAddress": null,
+      "createdAt": "2026-03-07T01:08:41.307Z"
+    },
+    {
+      "id": "8d27",
+      "userId": "15e1",
+      "userRole": "express_admin",
+      "companyId": "368f",
+      "action": "create",
+      "targetType": "user",
+      "targetId": "5c4b",
+      "description": "Created manager Mugisha  R.Guevara",
+      "metadata": {},
+      "ipAddress": null,
+      "createdAt": "2026-03-07T01:09:23.472Z"
+    },
+    {
+      "id": "1d2d",
+      "userId": "15e1",
+      "userRole": "express_admin",
+      "companyId": "368f",
+      "action": "logout",
+      "targetType": "session",
+      "targetId": "b1c2",
+      "description": "CYUSA logged out",
+      "metadata": {},
+      "ipAddress": null,
+      "createdAt": "2026-03-07T01:10:11.325Z"
+    },
+    {
+      "id": "fb68",
+      "userId": "5c4b",
+      "userRole": "manager",
+      "companyId": "368f",
+      "action": "login",
+      "targetType": "session",
+      "targetId": "597d",
+      "description": "Mugisha  logged in",
+      "metadata": {},
+      "ipAddress": null,
+      "createdAt": "2026-03-07T01:10:59.583Z"
+    },
+    {
+      "id": "b57c",
+      "userId": "5c4b",
+      "userRole": "manager",
+      "companyId": "368f",
+      "action": "logout",
+      "targetType": "session",
+      "targetId": "597d",
+      "description": "Mugisha  logged out",
+      "metadata": {},
+      "ipAddress": null,
+      "createdAt": "2026-03-07T01:13:00.258Z"
+    },
+    {
+      "id": "5fec",
+      "userId": "u001",
+      "userRole": "rura",
+      "companyId": null,
+      "action": "login",
+      "targetType": "session",
+      "targetId": "15d8",
+      "description": "Cyusa logged in",
+      "metadata": {},
+      "ipAddress": null,
+      "createdAt": "2026-03-07T01:13:41.419Z"
+    }
+  ]
+}
