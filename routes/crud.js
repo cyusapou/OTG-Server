@@ -73,7 +73,9 @@ export function crudRouter(Model, opts = {}) {
   router.post('/', async (req, res) => {
     try {
       const doc = await Model.create(req.body)
-      res.status(201).json(normalizeId(doc.toJSON()))
+      const out = normalizeId(doc.toJSON())
+      if (!out.id && doc._id) out.id = doc._id.toString()
+      res.status(201).json(out)
     } catch (err) {
       res.status(400).json({ error: err.message })
     }
