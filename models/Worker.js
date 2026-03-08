@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 
 const schema = new mongoose.Schema({
   userId:              { type: String, required: true, index: true },
+  driverId:            { type: String, default: null, index: true }, // permanent link: worker is driver's assistant
   name:                String,
   companyId:           { type: String, required: true, index: true },
   depotId:             { type: String, default: null },
