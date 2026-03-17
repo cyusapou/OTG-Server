@@ -1,8 +1,13 @@
 import { Router } from 'express'
 import { crudRouter } from './crud.js'
 import * as M from '../models/index.js'
+import aiRoutes from './ai.js'
 
 const router = Router()
+
+router.use('/ai', aiRoutes)
+
+
 
 // Every collection gets a full CRUD endpoint that mirrors json-server paths.
 // Relations map allows _expand=company to work.
