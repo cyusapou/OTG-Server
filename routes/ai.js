@@ -25,10 +25,10 @@ Driver: name*, phone*, licenseNumber*, companyId, depotId
 Depot: name*, city, address, companyId*
 *required`
 
-// Simple auth
+// Simple auth - accept any non-empty token
 router.use((req, res, next) => {
   const token = req.headers.authorization?.replace('Bearer ', '')
-  if (!token) return res.status(401).json({error: 'Token required'})
+  if (!token || token.trim() === '') return res.status(401).json({error: 'Token required'})
   req.token = token
   next()
 })
