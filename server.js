@@ -23,7 +23,7 @@ app.get('/', (_req, res) => {
 
 app.use('/api/v1/public/nearest-stop', nearestStopRoute)
 
-app.use(apiRoutes)
+app.use('/api/v1', apiRoutes)
 
 async function start() {
   if (!process.env.MONGODB_URI) {
@@ -32,8 +32,21 @@ async function start() {
   }
 
   try {
-    await mongoose.connect(process.env.MONGODB_URI)
+    await mongoose.connect(process.env.MONGODB_URI, {
+      dbName: 'onthego' // Explicitly set database name
+    })
     console.log('Connected to MongoDB Atlas')
+    console.log('Database:', mongoose.connection.name)
+    
+    // Test database connection by checking collections
+    const collections = await mongoose.connection.db.listCollections().toArray()
+    console.log('Available collections:', collections.map(c => c.name))
+    
+    // Test companies collection
+    const Company = (await import('./models/Company.js')).default
+    const companyCount = await Company.countDocuments()
+    console.log('Companies count:', companyCount)
+    
   } catch (err) {
     console.error('MongoDB connection failed:', err.message)
     process.exit(1)
